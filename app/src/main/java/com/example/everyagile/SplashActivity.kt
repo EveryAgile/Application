@@ -12,7 +12,11 @@ class SplashActivity : AppCompatActivity() {
         val binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intent = Intent(this,MainActivity::class.java)
+        startMain()
+    }
+
+    private fun startMain() {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
