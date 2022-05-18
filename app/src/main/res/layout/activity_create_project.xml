@@ -44,7 +44,7 @@
         android:layout_margin="15dp"
         android:src="@drawable/ic_person"
         app:layout_constraintStart_toStartOf="@+id/edit_projectInfo"
-        app:layout_constraintTop_toBottomOf="@+id/edit_projectInfo"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_projectInfo" />
 
     <TextView
         android:id="@+id/text_teamMember"
@@ -78,4 +78,23 @@
         app:layout_constraintTop_toTopOf="@+id/img_dueDate"
         android:layout_margin="20dp"/>
 
+    <TextView
+        android:id="@+id/text_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="중요도 - "
+        app:layout_constraintStart_toStartOf="@+id/text_projectInfo"
+        app:layout_constraintTop_toBottomOf="@+id/img_dueDate"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/btn_priority"
+        android:layout_width="70dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:background="#736B6B"
+        android:hint="입력"
+        app:layout_constraintBottom_toBottomOf="@+id/text_priority"
+        app:layout_constraintStart_toEndOf="@+id/text_priority"
+        app:layout_constraintTop_toTopOf="@+id/text_priority" />
 </androidx.constraintlayout.widget.ConstraintLayout>
