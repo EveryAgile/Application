@@ -1,5 +1,6 @@
 package com.example.everyagile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,7 +15,8 @@ class MainActivity : AppCompatActivity() {
             setContentView(binding.root)
 
         addButton.setOnClickListener{
-            Toast.makeText(this, "ADD!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, CreateProjectActivity::class.java)
+            startActivity(intent)
         }
     }
 }
