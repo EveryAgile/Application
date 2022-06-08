@@ -16,7 +16,7 @@
             android:name=".activities.ProductCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.ProjectCreateActivity"
+            android:name=".activities.ProjectActivity"
             android:exported="false"
             android:label="@string/title_activity_agile" />
         <activity

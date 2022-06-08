@@ -9,7 +9,7 @@ import com.example.myapplication.adpaters.adapter_Agile
 import com.example.myapplication.databinding.ActivityAgileBinding
 import com.example.myapplication.model_Agile
 
-class ProjectCreateActivity : AppCompatActivity() {
+class ProjectActivity : AppCompatActivity() {
     private var mBinding: ActivityAgileBinding? = null
     private val binding get() = mBinding!!
     var AgileList = arrayListOf<model_Agile>()

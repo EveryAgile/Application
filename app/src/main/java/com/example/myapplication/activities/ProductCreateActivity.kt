@@ -34,7 +34,7 @@ class ProductCreateActivity : AppCompatActivity() {
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, priorities)
         binding.spinnerPrioirity.adapter = spinnerAdapter
 
-        var intent_Agile = Intent(this, ProjectCreateActivity::class.java)
+        var intent_Agile = Intent(this, ProjectActivity::class.java)
         val is_new = intent.getBooleanExtra("is_new", true)
 
         //마감일 선택
