@@ -24,7 +24,7 @@ class adapter_backlog(val context: Context, val BacklogList: ArrayList<model_bac
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.sprint_backlog_list_model, null)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.list_sprint_backlog, null)
 
         val backlog_thumbnail = view.findViewById<ImageView>(R.id.backlog_thumbnail)
         val backlog_name = view.findViewById<TextView>(R.id.backlog_name)

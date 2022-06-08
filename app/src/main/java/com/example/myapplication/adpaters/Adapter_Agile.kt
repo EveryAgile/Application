@@ -24,7 +24,7 @@ class adapter_Agile(val context: Context, val AgileList: ArrayList<model_Agile>)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.product_backlog_list_model, null)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.list_product_backlog, null)
 
         val thumbnail = view.findViewById<ImageView>(R.id.thumbnail)
         val name = view.findViewById<TextView>(R.id.name)
