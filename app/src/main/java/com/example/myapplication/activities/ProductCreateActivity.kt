@@ -55,7 +55,7 @@ class ProductCreateActivity : AppCompatActivity() {
         //job에 할당할 인원 지정
         binding.buttonPersonnel.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.invitation_dialog, null)
+            val dialogView = layoutInflater.inflate(R.layout.dialog_invitation, null)
             val name = dialogView.findViewById<EditText>(R.id.edit_name)
 
             builder.setView(dialogView).setPositiveButton("Add"){
