@@ -13,10 +13,10 @@
             android:name=".Burndown"
             android:exported="false" />
         <activity
-            android:name=".create.Create_job"
+            android:name=".Agile.ProductCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".Agile.Agile"
+            android:name=".Agile.ProjectCreateActivity"
             android:exported="false"
             android:label="@string/title_activity_agile" />
         <activity

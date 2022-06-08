@@ -3,22 +3,19 @@ package com.example.myapplication.Agile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.AdapterView
 import android.widget.Toast
-import com.example.myapplication.R
 import com.example.myapplication.adpaters.adapter_Agile
-import com.example.myapplication.create.Create_job
 import com.example.myapplication.databinding.ActivityAgileBinding
 import com.example.myapplication.model_Agile
 
-class Agile : AppCompatActivity() {
+class ProjectCreateActivity : AppCompatActivity() {
     private var mBinding: ActivityAgileBinding? = null
     private val binding get() = mBinding!!
     var AgileList = arrayListOf<model_Agile>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var intent = Intent(this, Create_job::class.java)
+        var intent = Intent(this, ProductCreateActivity::class.java)
         mBinding = ActivityAgileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

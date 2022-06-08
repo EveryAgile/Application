@@ -1,4 +1,4 @@
-package com.example.myapplication.create
+package com.example.myapplication.Agile
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -8,14 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.annotation.RequiresApi
-import com.example.myapplication.Agile.Agile
 import com.example.myapplication.R
 import com.example.myapplication.adpaters.adapter_backlog
 import com.example.myapplication.databinding.ActivityCreateSprintBinding
 import com.example.myapplication.model_backlog
 import java.util.*
 
-class Create_job : AppCompatActivity() {
+class ProductCreateActivity : AppCompatActivity() {
     var BacklogList = arrayListOf<model_backlog>(
         model_backlog(R.drawable.ic_circledcheck, "test1", "3"),
         model_backlog(R.drawable.ic_circledcheck, "test1", "2"),
@@ -34,7 +33,7 @@ class Create_job : AppCompatActivity() {
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, priorities)
         binding.spinnerPrioirity.adapter = spinnerAdapter
 
-        var intent_Agile = Intent(this, Agile::class.java)
+        var intent_Agile = Intent(this, ProjectCreateActivity::class.java)
         val is_new = intent.getBooleanExtra("is_new", true)
 
         //마감일 선택

@@ -3,7 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myapplication.Agile.Agile
+import com.example.myapplication.Agile.ProjectCreateActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         //Agile 화면으로
         binding.buttonAgile.setOnClickListener {
-            var intent = Intent(this, Agile::class.java)
+            var intent = Intent(this, ProjectCreateActivity::class.java)
             startActivity(intent)
         }
     }
