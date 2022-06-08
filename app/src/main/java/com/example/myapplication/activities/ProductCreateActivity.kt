@@ -1,4 +1,4 @@
-package com.example.myapplication.Agile
+package com.example.myapplication.activities
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -10,7 +10,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import com.example.myapplication.R
 import com.example.myapplication.adpaters.adapter_backlog
-import com.example.myapplication.databinding.ActivityCreateSprintBinding
+import com.example.myapplication.databinding.ActivityCreateProductBacklogBinding
 import com.example.myapplication.model_backlog
 import java.util.*
 
@@ -21,13 +21,14 @@ class ProductCreateActivity : AppCompatActivity() {
         model_backlog(R.drawable.ic_circledcheck, "test1", "1")
     )
 
-    private var mBinding: ActivityCreateSprintBinding? = null
+    private var mBinding: ActivityCreateProductBacklogBinding? = null
     private val binding get() = mBinding!!
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityCreateSprintBinding.inflate(layoutInflater)
+        mBinding = ActivityCreateProductBacklogBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val priorities = arrayOf("하", "중", "상")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, priorities)

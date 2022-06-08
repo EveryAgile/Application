@@ -1,4 +1,4 @@
-package com.example.myapplication.Agile
+package com.example.myapplication.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

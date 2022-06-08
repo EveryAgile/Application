@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Agile.ProductCreateActivity">
+    tools:context=".activities.ProductCreateActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/Smenu"
@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".Agile.ProductCreateActivity">
+            tools:context=".activities.ProductCreateActivity">
 
             <ImageButton
                 android:id="@+id/button_finish"
