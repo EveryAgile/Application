@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="투표할 항목을 고르세요"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="항목1"
+        android:textColor="@color/material_dynamic_neutral_variant20" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="항목2"
+        android:textColor="@color/material_dynamic_neutral_variant20" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="항목3"
+        android:textColor="@color/material_dynamic_neutral_variant20" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="항목4"
+        android:textColor="@color/material_dynamic_neutral_variant20" />
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="항목5"
+        android:textColor="@color/material_dynamic_neutral_variant20" />
+
+    <Button
+        android:id="@+id/summitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제출" />
+
+</LinearLayout>
