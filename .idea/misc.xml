@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.2352744310575636" />
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout-w936dp/activity_login.xml" value="0.274609375" />
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout/activity_agile.xml" value="0.36614583333333334" />
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout/activity_burndown.xml" value="0.1875" />
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout/activity_signin.xml" value="0.34057971014492755" />
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout/activity_signup.xml" value="0.36614583333333334" />
+        <entry key="..\:/Android Studio Workspace/every_agile/Frontend/app/src/main/res/layout/list_product_backlog.xml" value="0.36614583333333334" />
         <entry key="..\:/Android Studio Workspace/team/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
         <entry key="..\:/Android Studio Workspace/team/app/src/main/res/drawable/ic_add.xml" value="0.2985" />
         <entry key="..\:/Android Studio Workspace/team/app/src/main/res/drawable/ic_calendar.xml" value="0.2985" />

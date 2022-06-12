@@ -13,10 +13,16 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SprintCreateActivity"
+            android:name=".activities.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Burndown"
+            android:name=".activities.SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SprintCreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BurndownActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ProductCreateActivity"
