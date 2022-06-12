@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     var networkService: RetrofitService
-//    val URL = ""
+    val URL = "http://13.209.239.177:8080/"
     private val client: OkHttpClient
     init {
         val interceptor = HttpLoggingInterceptor().apply {
@@ -35,7 +35,7 @@ object RetrofitClient {
 
     val retrofit: Retrofit
         get() = Retrofit.Builder()
-//            .baseUrl(URL)
+            .baseUrl(URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
