@@ -1,21 +1,62 @@
 package com.example.myapplication.network
 
-import com.example.myapplication.models.ResponsResult
-import com.example.myapplication.models.SignUp
-import com.example.myapplication.models.Users
+import com.example.myapplication.models.*
 import retrofit2.Call
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RetrofitService {
-
     @POST("/users/auth/signup")
     fun signUp(
         @Body signUp: SignUp
-    ):Call<ResponsResult>
+    ):Call<SignUpResult>
+
+    @POST("/users/auth/signin")
+    fun signIn(
+        @Body signIn: SignIn
+    ):Call<SignInResult>
 
     @GET("/users")
-    fun getUsers(): Call<Users>
+    fun users(
+    ):Call<UsersResult>
+
+    @GET("/users/backlog")
+    fun backlog(
+        @Header("X-AUTH-TOKEN") accessToken: String?
+    ):Call<BacklogResult>
+
+    @POST("/projects")
+    fun projects(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Body projects: Projects
+    ):Call<ProjectsResult>
+
+    @POST("/projects/member")
+    fun member(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Body member: Member
+    ):Call<MemberResult>
+
+    @POST("/sprints")
+    fun createSprint(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Body createSprint: CreateSprint
+    ):Call<CreateSprintResult>
+
+    @GET("/sprints/project/{projectId}")
+    fun inquirySprints(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("projectId") projectId: Int?
+    ):Call<InquireSprintsResult>
+
+    @GET("/sprints/{sprintId}/members")
+    fun sprintMembers(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("sprintId") sprintId: Int?
+    ):Call<sprintMembersResult>
+
+    @DELETE("/sprints/{sprintId}")
+    fun sprintDelete(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("sprintId") sprintId: Int?
+    ):Call<SprintDeleteResult>
 }
