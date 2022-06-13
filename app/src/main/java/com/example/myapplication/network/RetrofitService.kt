@@ -48,6 +48,12 @@ interface RetrofitService {
         @Path("projectId") projectId: Int?
     ):Call<InquireSprintsResult>
 
+    @GET("/projects/{projectId}/members")
+    fun inquiryMembers(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("projectId") projectId: Int
+    ):Call<InquiryMembersResult>
+
     @GET("/sprints/{sprintId}/members")
     fun sprintMembers(
         @Header("X-AUTH-TOKEN") accessToken: String?,

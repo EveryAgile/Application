@@ -53,6 +53,21 @@ data class MemberResult(
 ) : Parcelable
 
 @Parcelize
+data class ProjectMembers(
+    var Id: Int,
+    var name: String?,
+    var email: String?,
+):Parcelable
+
+@Parcelize
+data class InquiryMembersResult(
+    var code: Int,
+    var msg: String,
+    var success: Boolean,
+    var list: List<ProjectMembers>
+):Parcelable
+
+@Parcelize
 data class CreateSprintResult(
     var code: Int,
     var msg: String,
@@ -99,3 +114,4 @@ data class SprintDeleteResult(
     var msg: String,
     var success: Boolean
 ):Parcelable
+

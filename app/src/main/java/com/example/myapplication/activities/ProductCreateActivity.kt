@@ -55,9 +55,9 @@ class ProductCreateActivity : AppCompatActivity() {
                         var tempString = ""
                         for (i: Int in 0 until personel!!.size){
                             if (i == 0) {
-                                tempString += personel[i].name
+                                tempString += personel[i].email
                             }else{
-                                tempString += ", " + personel[i].name
+                                tempString += ", " + personel[i].email
                             }
                         }
                         binding.textTeamMember.setText(tempString)
@@ -100,22 +100,50 @@ class ProductCreateActivity : AppCompatActivity() {
         binding.buttonPersonnel.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.dialog_invitation, null)
-            val name = dialogView.findViewById<EditText>(R.id.edit_name)
-
+            val email = dialogView.findViewById<EditText>(R.id.edit_name)
             builder.setView(dialogView).setPositiveButton("Add"){
                     dialogInterface, i->
-                if (binding.textTeamMember.text.toString() == "배정하기"){
-                    binding.textTeamMember.setText(name.text.toString())
-                }else {
-                    binding.textTeamMember.setText(", " +
-                            binding.textTeamMember.text.toString() + name.text.toString())
-                }
+                val projectMembersCall: Call<InquiryMembersResult> =
+                    RetrofitClient.networkService.inquiryMembers(accessToken=accessToken, projectId)
+                projectMembersCall.enqueue(object : Callback<InquiryMembersResult> {
+                    override fun onResponse(
+                        call: Call<InquiryMembersResult>,
+                        response: Response<InquiryMembersResult>
+                    ){
+                        if (response.isSuccessful) {
+                            Log.d("프로젝트 멤버 소속", "성공 : ${response.body()}")
+                            var members = response.body()?.list
+                            for (i: Int in 0 until members!!.size){
+                                var flag = false
+                                if (members[i].email == email.text.toString()){
+                                    if (binding.textTeamMember.text.toString() == "배정하기") {
+                                        binding.textTeamMember.setText(email.text.toString())
+                                    } else {
+                                        binding.textTeamMember.setText(
+                                            binding.textTeamMember.text.toString() + ", " + email.text.toString()
+                                        )
+                                    }
+                                    break
+                                }
+                                if (!flag){
+                                    Toast.makeText(applicationContext, "No such member", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            Log.d("프로젝트 멤버 소속", "실패 : ${response.errorBody()?.string()!!}")
+                        }
+                    }
+                    override fun onFailure(call: Call<InquiryMembersResult>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+                })
+
             }
                 .setNegativeButton("Cancel"){
                         dialogInterface, i->
                 }
-            name.setOnClickListener {
-                name.setText("")
+            email.setOnClickListener {
+                email.setText("")
             }
             builder.show()
         }
@@ -132,7 +160,7 @@ class ProductCreateActivity : AppCompatActivity() {
 
         //완료버튼
         binding.buttonFinish.setOnClickListener{
-            //스프린트 수정이 없어서 새로 만드는 것이 아니면 지우고 다시 만드는걸할게요
+            //스프린트 수정이 없어서 새로 만드는 것이 아니면 지우고 다시 만드는걸로할게요
             if (!isNew){
                 val sprintDeleteCall: Call<SprintDeleteResult> =
                     RetrofitClient.networkService.sprintDelete(accessToken=accessToken, sprint?.sprintId)
