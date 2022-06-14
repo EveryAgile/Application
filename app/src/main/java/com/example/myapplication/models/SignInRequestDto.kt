@@ -3,13 +3,11 @@ package com.example.myapplication.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class SignUp(
-    var email: String?,
-    var name: String?,
-    var password: String?
-) : Parcelable {
+data class SignInRequestDto (
+    var email: String? = null,
+    var password: String? = null
+        ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
         parcel.readString(),
         parcel.readString()
     ) {
@@ -17,7 +15,6 @@ data class SignUp(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(email)
-        parcel.writeString(name)
         parcel.writeString(password)
     }
 
@@ -25,12 +22,12 @@ data class SignUp(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<SignUp> {
-        override fun createFromParcel(parcel: Parcel): SignUp {
-            return SignUp(parcel)
+    companion object CREATOR : Parcelable.Creator<SignInRequestDto> {
+        override fun createFromParcel(parcel: Parcel): SignInRequestDto {
+            return SignInRequestDto(parcel)
         }
 
-        override fun newArray(size: Int): Array<SignUp?> {
+        override fun newArray(size: Int): Array<SignInRequestDto?> {
             return arrayOfNulls(size)
         }
     }

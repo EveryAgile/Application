@@ -3,15 +3,17 @@ package com.example.myapplication.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class ResponsResult(
-    var success: Boolean,
-    var code: Int,
-    var msg: String?,
+data class SprintContent (
+    var success: Boolean= true,
+    var code: Int = 0,
+    var msg: String? = null,
+    var list: SprintResponseDto? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readByte() != 0.toByte(),
         parcel.readInt(),
-        parcel.readString()
+        parcel.readString(),
+        TODO("list")
     ) {
     }
 
@@ -25,12 +27,12 @@ data class ResponsResult(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ResponsResult> {
-        override fun createFromParcel(parcel: Parcel): ResponsResult {
-            return ResponsResult(parcel)
+    companion object CREATOR : Parcelable.Creator<SprintCreate> {
+        override fun createFromParcel(parcel: Parcel): SprintCreate {
+            return SprintCreate(parcel)
         }
 
-        override fun newArray(size: Int): Array<ResponsResult?> {
+        override fun newArray(size: Int): Array<SprintCreate?> {
             return arrayOfNulls(size)
         }
     }

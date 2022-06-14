@@ -3,25 +3,26 @@ package com.example.myapplication.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class SingleResulta (
-    var success: Boolean,
-    var code: Int,
-    var msg: String?,
-    var list: List<UserResponseDto>?
+data class CommenResult (
+    var code: Int = 0,
+    var data: TokenDto? = null,
+    var msg: String? = null,
+    var success: Boolean = true,
+
     ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readByte() != 0.toByte(),
         parcel.readInt(),
+        parcel.readParcelable(TokenDto::class.java.classLoader),
         parcel.readString(),
-        parcel.createTypedArrayList(UserResponseDto)
+        parcel.readByte() != 0.toByte()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeByte(if (success) 1 else 0)
         parcel.writeInt(code)
+        parcel.writeParcelable(data, flags)
         parcel.writeString(msg)
-        parcel.writeTypedList(list)
+        parcel.writeByte(if (success) 1 else 0)
     }
 
     override fun describeContents(): Int {
