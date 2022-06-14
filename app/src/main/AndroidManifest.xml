@@ -13,11 +13,23 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProjectCreateActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SignInActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.SprintCreateActivity"
             android:exported="false" />
@@ -26,20 +38,14 @@
             android:exported="false" />
         <activity
             android:name=".activities.ProductCreateActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activities.ProjectActivity"
             android:exported="false"
             android:label="@string/title_activity_agile" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

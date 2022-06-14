@@ -70,17 +70,25 @@
                 app:layout_constraintVertical_bias="0.022" />
 
             <TextView
-                android:id="@+id/edit_projectName"
-                android:layout_width="381dp"
-                android:layout_height="26dp"
+                android:id="@+id/text_productName"
+                android:layout_width="110dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="60dp"
                 android:ems="10"
                 android:hint="작업 이름을 입력해주세요."
                 android:inputType="textPersonName"
-                android:text="자료조사의 하위 작업목록"
+                android:text="ProjectName"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_gkdnl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="의 하위 작업"
+                app:layout_constraintBottom_toBottomOf="@+id/text_productName"
+                app:layout_constraintStart_toEndOf="@+id/text_productName" />
 
             <EditText
                 android:id="@+id/text_teamMember"
@@ -114,14 +122,14 @@
                 app:layout_constraintVertical_bias="0.517" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textSprintName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="설문 조사"
+                android:text="SprintName"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/edit_projectName"
-                app:layout_constraintTop_toBottomOf="@+id/edit_projectName" />
+                app:layout_constraintStart_toStartOf="@+id/text_productName"
+                app:layout_constraintTop_toBottomOf="@+id/text_productName" />
 
             <ImageButton
                 android:id="@+id/button_personnel"
@@ -158,7 +166,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_projectName"
+                app:layout_constraintTop_toBottomOf="@+id/text_productName"
                 tools:ignore="MissingConstraints"></LinearLayout>
 
             <EditText
@@ -231,11 +239,11 @@
                 android:layout_marginTop="8dp"
                 android:text="하위 작업 소개"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintStart_toStartOf="@+id/textSprintName"
+                app:layout_constraintTop_toBottomOf="@+id/textSprintName" />
 
             <EditText
-                android:id="@+id/textView6"
+                android:id="@+id/text_story"
                 android:layout_width="72dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="12dp"
