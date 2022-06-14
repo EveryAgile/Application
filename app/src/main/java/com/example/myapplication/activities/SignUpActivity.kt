@@ -48,7 +48,7 @@ class SignUpActivity : AppCompatActivity() {
                     }
                 }
                 override fun onFailure(call: Call<SignUpResult>, t: Throwable) {
-                    Log.d("회원 모드 조회", "실패2 : $t")
+                    Log.d("로그인", "실패2 : $t")
                 }
             })
         }

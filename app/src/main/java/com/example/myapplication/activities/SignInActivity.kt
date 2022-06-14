@@ -24,11 +24,13 @@ class SignInActivity : AppCompatActivity() {
         mBinding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //회원가입 액티비티
         binding.buttonSignUp.setOnClickListener {
             var signUpIntent = Intent(this, SignUpActivity::class.java)
             startActivity(signUpIntent)
         }
 
+        //로그인 액티비티
         binding.buttonSignIn.setOnClickListener {
             var email: String = binding.editTextEmail.text.toString()
             var password: String = binding.editTextPassword.text.toString()

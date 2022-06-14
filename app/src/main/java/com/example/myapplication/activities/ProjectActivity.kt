@@ -30,7 +30,8 @@ class ProjectActivity : AppCompatActivity() {
         mBinding = ActivityAgileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val inquireSprintsCall: Call<InquireSprintsResult> =
+        //프로젝트에 있는 스프린트 조회해서 리스트뷰로 띄우기
+       val inquireSprintsCall: Call<InquireSprintsResult> =
             RetrofitClient.networkService.inquirySprints(accessToken=accessToken, projectId)
         inquireSprintsCall.enqueue(object : Callback<InquireSprintsResult> {
             override fun onResponse(

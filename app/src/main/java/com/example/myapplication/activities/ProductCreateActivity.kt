@@ -39,9 +39,8 @@ class ProductCreateActivity : AppCompatActivity() {
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, priorities)
         binding.spinnerPrioirity.adapter = spinnerAdapter
 
-        //새로 만드는 버튼을 눌러서 이 화면 온게 아니라면 DB에서 데이터 불러옴
+        //새로 만드는 버튼을 눌러서 이 화면 온게 아니라면 DB에서 데이터 불러와서 값 채워넣음
         if (!isNew){
-
             val sprintMembersCall: Call<sprintMembersResult> =
                 RetrofitClient.networkService.sprintMembers(accessToken=accessToken, sprint?.sprintId)
             sprintMembersCall.enqueue(object : Callback<sprintMembersResult> {
@@ -103,6 +102,7 @@ class ProductCreateActivity : AppCompatActivity() {
             val email = dialogView.findViewById<EditText>(R.id.edit_name)
             builder.setView(dialogView).setPositiveButton("Add"){
                     dialogInterface, i->
+                //dialog에서 이메일 입력받았을 때 프로젝트 멤버 중 한명의 이메일인지 확인
                 val projectMembersCall: Call<InquiryMembersResult> =
                     RetrofitClient.networkService.inquiryMembers(accessToken=accessToken, projectId)
                 projectMembersCall.enqueue(object : Callback<InquiryMembersResult> {
