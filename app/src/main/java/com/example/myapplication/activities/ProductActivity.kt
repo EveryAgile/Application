@@ -3,6 +3,8 @@ package com.example.myapplication.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import android.widget.TextView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityProductBinding
 import com.example.myapplication.models.SprintContent
@@ -28,7 +30,19 @@ class ProductActivity : AppCompatActivity() {
 
         val productId = intent.getIntExtra("productId",0)
 
-        val call: Call<SprintContent> = RetrofitClient.networkService.getProductContent(accessToken,productId)
+        getProductContent(accessToken, productId, name, endTime, dess, spin)
+    }
+
+    private fun getProductContent(
+        accessToken: String,
+        productId: Int,
+        name: EditText,
+        endTime: EditText,
+        dess: EditText,
+        spin: TextView
+    ) {
+        val call: Call<SprintContent> =
+            RetrofitClient.networkService.getProductContent(accessToken, productId)
         call.enqueue(object : Callback<SprintContent> {
             override fun onResponse(
                 call: Call<SprintContent>,
