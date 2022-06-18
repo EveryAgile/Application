@@ -13,10 +13,13 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SprintActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ProductActivity"
             android:exported="true" />
         <activity
-            android:name=".ProjectCreateActivity"
+            android:name=".activities.ProjectCreateActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SignUpActivity"
@@ -44,7 +47,7 @@
             android:exported="false"
             android:label="@string/title_activity_agile" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true" />
     </application>
 

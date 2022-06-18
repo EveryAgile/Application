@@ -57,9 +57,45 @@ interface RetrofitService {
         @Header("X-AUTH-TOKEN") accessToken: String?,
     ):Call<SprintCreate>
 
-    @GET("/sprints/{sprintID}")
+    @GET("/sprints/{sprintId}")
     fun getProductContent(
         @Header("X-AUTH-TOKEN") accessToken: String?,
-        @Path("sprintId") sprintId: Int
+        @Path("sprintId") sprintId: Long
     ):Call<SprintContent>
+
+    @POST("/backlogs")
+    fun postSprint(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Body backlogRequestDto: BacklogRequestDto
+    ):Call<CreateBacklog>
+
+    @POST("/projects/member")
+    fun postMember(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Body inviteRequestDto: InviteRequestDto
+    ):Call<CommonResult>
+
+    @GET("/sprints/project/{projectId}")
+    fun getProductList(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("projectId")  projectId: Long
+    ):Call<SprintList>
+
+    @DELETE("/projects/{projectId}")
+    fun deleteProject(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("projectId")  projectId: Long
+    ):Call<CommonResult>
+
+    @GET("backlogs/sprint/{sprintId}")
+    fun getSprintList(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("sprintId")  sprintId: Long
+    ):Call<BacklogList>
+
+    @GET("backlogs/{backlogId}")
+    fun getSprint(
+        @Header("X-AUTH-TOKEN") accessToken: String?,
+        @Path("backlogId")  backlogId: Long
+    ):Call<BacklogList>
 }

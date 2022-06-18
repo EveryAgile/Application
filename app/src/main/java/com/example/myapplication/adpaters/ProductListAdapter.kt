@@ -10,12 +10,13 @@ import com.example.myapplication.activities.ProjectActivity
 import com.example.myapplication.databinding.ListProductBacklogBinding
 import com.example.myapplication.databinding.ListProjectBinding
 import com.example.myapplication.models.ProjectResponseDto
+import com.example.myapplication.models.SprintListItem
 import com.example.myapplication.models.SprintResponseDto
 
 class ProductListViewHolder(val binding: ListProductBacklogBinding): RecyclerView.ViewHolder(binding.root){
 }
 class ProductListAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    var productListData = mutableListOf<SprintResponseDto>()
+    var productListData = mutableListOf<SprintListItem>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder{
         return ProductListViewHolder(ListProductBacklogBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -27,6 +28,7 @@ class ProductListAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         binding.name.setOnClickListener {
             Intent(holder.itemView.context, ProductActivity::class.java).apply {
                 putExtra("productId", productListData[position].sprintId)
+                Log.d("productId1", productListData[position].sprintId.toString())
 //                putExtra("projectName", projectListData[position].projectName)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }.run { holder.itemView.context.startActivity(this) }

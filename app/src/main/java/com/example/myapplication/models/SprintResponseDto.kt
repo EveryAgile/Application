@@ -5,12 +5,13 @@ import android.os.Parcelable
 
 data class SprintResponseDto (
     var sprintId: Long,
-    var sprintName: String?,
+    var sprintName: String?=null,
     var projectId: Long,
-    var endTime: String?,
-    var decription: String?,
-    var importance: String?,
-    var status: Boolean
+    var endTime: String?=null,
+    var decription: String?=null,
+    var importance: String?=null,
+    var status: Boolean,
+    var sprints: MutableList<Long>? = null
         ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),

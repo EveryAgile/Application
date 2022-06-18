@@ -5,13 +5,14 @@ import android.os.Parcelable
 import java.time.Duration
 
 data class BacklogResponseDto (
-    var backlogId: Long,
-    var backlogName: String?,
-    var sprintId: Long,
-    var endTime: String?,
-    var storyPoint: Double,
-    var manDay: Double,
-    var status: Boolean?
+    var backlogId: Long= 0,
+    var backlogName: String?=null,
+    var sprintId: Long = 0,
+    var endTime: String? = null,
+    var storyPoint: Double = 0.0,
+    var manDay: Double = 0.0,
+    var status: Boolean? = false,
+    var tasks: MutableList<Long>? = null
         ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),

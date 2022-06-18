@@ -5,17 +5,19 @@ import android.os.Parcelable
 
 data class ProjectResponseDto (
     var projectId: Long,
-    var projectName: String?,
-    var startTime: String?,
-    var endTime: String?,
-    var type: String?
+    var projectName: String? = null,
+    var startTime: String?= null,
+    var endTime: String? =null,
+    var type: String? = null,
+    var sprints: MutableList<Long>? = null
         ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        TODO("sprints")
     ) {
     }
 

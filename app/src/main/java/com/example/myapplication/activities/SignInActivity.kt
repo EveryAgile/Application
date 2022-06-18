@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
-import com.example.myapplication.MainActivity
 import com.example.myapplication.databinding.ActivitySigninBinding
 import com.example.myapplication.models.SignInRequestDto
 import com.example.myapplication.models.CommenResult

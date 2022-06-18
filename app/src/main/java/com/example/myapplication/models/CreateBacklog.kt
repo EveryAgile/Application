@@ -3,12 +3,11 @@ package com.example.myapplication.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class SprintContent (
-    var success: Boolean= true,
-    var code: Int = 0,
-    var msg: String? = null,
-    var data: SprintResponseDto? = null
-) : Parcelable {
+data class CreateBacklog (    var success: Boolean= true,
+                         var code: Int = 0,
+                         var msg: String? = null,
+                              var list: MutableList<BacklogResponseDto>? = null
+                              ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readByte() != 0.toByte(),
         parcel.readInt(),
@@ -27,12 +26,12 @@ data class SprintContent (
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<SprintCreate> {
-        override fun createFromParcel(parcel: Parcel): SprintCreate {
-            return SprintCreate(parcel)
+    companion object CREATOR : Parcelable.Creator<CreateBacklog> {
+        override fun createFromParcel(parcel: Parcel): CreateBacklog {
+            return CreateBacklog(parcel)
         }
 
-        override fun newArray(size: Int): Array<SprintCreate?> {
+        override fun newArray(size: Int): Array<CreateBacklog?> {
             return arrayOfNulls(size)
         }
     }

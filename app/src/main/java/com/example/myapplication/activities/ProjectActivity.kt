@@ -12,23 +12,19 @@ import com.example.myapplication.adpaters.ProjectListAdapter
 import com.example.myapplication.adpaters.adapter_Agile
 import com.example.myapplication.databinding.ActivityAgileBinding
 import com.example.myapplication.model_Agile
-import com.example.myapplication.models.ProjectCreate
-import com.example.myapplication.models.ProjectResponseDto
-import com.example.myapplication.models.SprintCreate
-import com.example.myapplication.models.SprintResponseDto
+import com.example.myapplication.models.*
 import com.example.myapplication.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ProjectActivity : AppCompatActivity() {
-    private var mBinding: ActivityAgileBinding? = null
-    private val binding get() = mBinding!!
+
     var AgileList = arrayListOf<model_Agile>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val projectId = intent.getLongExtra("projectId",0)
-        mBinding = ActivityAgileBinding.inflate(layoutInflater)
+        var binding = ActivityAgileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var accessToken = SignInActivity.prefs.getString("ACCESS_TOKEN","")
@@ -37,52 +33,84 @@ class ProjectActivity : AppCompatActivity() {
         binding.createProject.setOnClickListener {
             var intent = Intent(this, ProductCreateActivity::class.java)
             intent.putExtra("projectId", projectId)
+            Log.d("b", projectId.toString())
             startActivity(intent)
         }
+
+        Log.d("token",accessToken.toString())
 
         val layoutManager = LinearLayoutManager(this)
         val productListAdapter = ProductListAdapter()
 
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = productListAdapter
-        ProjectListAdapter().notifyDataSetChanged()
+        productListAdapter.notifyDataSetChanged()
 
-        getProductList(accessToken, productListAdapter)
+        getProductList(accessToken, productListAdapter,projectId)
 
+        var email = binding.editText
+        binding.btnIn.setOnClickListener {
+            var member = InviteRequestDto()
+            member.memberEmail = email.text.toString()
+            member.projectId = projectId
+            val call: Call<CommonResult> = RetrofitClient.networkService.postMember(accessToken,member)
+            call.enqueue(object : Callback<CommonResult> {
+                override fun onResponse(
+                    call: Call<CommonResult>,
+                    response: Response<CommonResult>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.toString()?.let { Log.d("초대", it) }
+
+                    } else {
+                        Log.d("초대", "실패1 : ${response.errorBody()?.string()!!}")
+                    }
+                }
+
+                override fun onFailure(call: Call<CommonResult>, t: Throwable) {
+                    Log.d("초대", "실패2 : $t")
+                }
+            })
+        }
+        productListAdapter.notifyDataSetChanged()
     }
 
     private fun getProductList(
         accessToken: String,
-        productListAdapter: ProductListAdapter
+        productListAdapter: ProductListAdapter,
+        projectId: Long
     ) {
-        val call: Call<SprintCreate> = RetrofitClient.networkService.getProduct(accessToken)
-        call.enqueue(object : Callback<SprintCreate> {
-            override fun onResponse(
-                call: Call<SprintCreate>,
-                response: Response<SprintCreate>
-            ) {
-                if (response.isSuccessful) {
-                    var productList: List<SprintResponseDto>? = response.body()?.list
-                    if (productList != null && productList.size > 0) {
-                        for (i in 0 until productList.size) {
-                            productListAdapter.productListData.add(productList[i])
-                            productListAdapter.notifyDataSetChanged()
+
+            val call: Call<SprintList> = RetrofitClient.networkService.getProductList(accessToken,projectId)
+            call.enqueue(object : Callback<SprintList> {
+                override fun onResponse(
+                    call: Call<SprintList>,
+                    response: Response<SprintList>
+                ) {
+                    if (response.isSuccessful) {
+                        var productList: MutableList<SprintListItem>? = response.body()?.list
+                        Log.d("productlist",productList.toString())
+                        if (productList != null && productList.size > 0) {
+                            for (i in 0 until productList.size) {
+                                productListAdapter.productListData.add(productList[i])
+                                productListAdapter.notifyDataSetChanged()
+                            }
+                        } else {
+                            Log.d("Product 조회", "생성된 프로덕트백로그가 없습니다")
                         }
+                        response.body()?.toString()?.let { Log.d("로그인", it) }
+
                     } else {
-                        Log.d("Product 조회", "생성된 프로덕트백로그가 없습니다")
+                        Log.d("로그인", "실패1 : ${response.errorBody()?.string()!!}")
+                        Log.d("로그인", accessToken.toString())
                     }
-                    response.body()?.toString()?.let { Log.d("로그인", it) }
-
-                } else {
-                    Log.d("로그인", "실패1 : ${response.errorBody()?.string()!!}")
-                    Log.d("로그인", accessToken.toString())
                 }
-            }
 
-            override fun onFailure(call: Call<SprintCreate>, t: Throwable) {
-                Log.d("로그인", "실패2 : $t")
-            }
-        })
+                override fun onFailure(call: Call<SprintList>, t: Throwable) {
+                    Log.d("로그인", "실패2 : $t")
+                }
+            })
+            productListAdapter.notifyDataSetChanged()
     }
 
     //create_job activity가 끝나고 돌아왔을 때 listView 업데이트
@@ -95,7 +123,6 @@ class ProjectActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        mBinding = null
         super.onDestroy()
     }
 
